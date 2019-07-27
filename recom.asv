@@ -17,7 +17,7 @@ pause;
 num_features = 5;
 
 % Set Initial Parameters (Theta, X)
-%X = randn(num_places, num_features);
+X = randn(num_places, num_features);
 %Theta = randn(num_users, num_features);
 %load("Theta_vec")
 Theta = y(11:15,:)';
@@ -28,7 +28,7 @@ initial_parameters = [X(:); Theta(:)];
 options = optimset('GradObj', 'on', 'MaxIter', 100);
 
 % Set Regularization
-lambda = 1;
+lambda = 10;
 theta = fmincg (@(t)(cofiCostFunc(t, Y, R, num_users, num_places, ...
                                 num_features, lambda)), ...
                 initial_parameters, options);
